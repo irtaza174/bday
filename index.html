@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday</title>
+  <title>Happy Birthday My Love</title>
   <style>
     :root {
       --primary: #ff69b4; /* Hot pink */
@@ -12,7 +11,7 @@
       --accent1: #ff6b9d; /* Lighter pink */
       --accent2: #ff4757; /* Red-pink */
       --text: #ffb6c1; /* Light pink */
-      --bg: black;
+      --bg: #0a0a0a; /* Slightly lighter black */
     }
     
     body {
@@ -28,19 +27,28 @@
     /* Background Flowers */
     .bg-flower {
       position: fixed;
-      font-size: 1.5rem;
-      opacity: 0.15;
-      animation: floatDown 15s linear infinite;
+      font-size: 1.8rem;
+      opacity: 0.18;
+      animation: floatDown 18s linear infinite;
       z-index: -1;
       pointer-events: none;
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
     }
 
     @keyframes floatDown {
       0% {
-        transform: translateY(-100px) rotate(0deg);
+        transform: translateY(-100px) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.18;
+      }
+      90% {
+        opacity: 0.18;
       }
       100% {
-        transform: translateY(100vh) rotate(360deg);
+        transform: translateY(100vh) rotate(360deg) scale(1.2);
+        opacity: 0;
       }
     }
 
@@ -52,9 +60,12 @@
       transform: translate(-50%, -50%);
       width: 90%;
       max-width: 800px;
-      padding: 20px;
-      animation: fadeIn 1s ease-in;
+      padding: 25px;
+      animation: fadeIn 1.2s ease-in;
       display: none;
+      background: rgba(10, 10, 10, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 20, 147, 0.2);
     }
 
     #landing {
@@ -62,30 +73,33 @@
     }
 
     #screen2 {
-      background: var(--bg); /* Solid background for heart game */
+      background: var(--bg);
+      box-shadow: none;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translate(-50%, -45%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
     }
 
     /* Typography */
     h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin-bottom: 1rem;
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      margin-bottom: 1.5rem;
       background: linear-gradient(45deg, var(--primary), var(--accent2));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+      text-shadow: 0 0 15px rgba(255, 20, 147, 0.4);
+      letter-spacing: 1px;
     }
 
     p {
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      margin-bottom: 2rem;
+      font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+      margin-bottom: 2.5rem;
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
+      text-shadow: 0 0 5px rgba(255, 182, 193, 0.3);
     }
 
     /* Colorful Text Elements */
@@ -101,15 +115,16 @@
 
     /* Buttons */
     button {
-      padding: 12px 25px;
-      font-size: 1.1rem;
+      padding: 14px 30px;
+      font-size: 1.2rem;
       border: none;
       cursor: pointer;
       border-radius: 50px;
-      margin: 15px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+      margin: 20px 15px;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 20px rgba(255, 20, 147, 0.4);
       font-weight: bold;
+      letter-spacing: 1px;
     }
 
     .btn-pink {
@@ -128,71 +143,81 @@
     }
 
     button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(255, 20, 147, 0.5);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 20, 147, 0.6);
     }
 
     /* Animations */
     .blink {
-      animation: blink 1.5s infinite;
+      animation: blink 2s infinite;
     }
 
     @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
+      0%, 100% { opacity: 1; text-shadow: 0 0 20px var(--primary); }
+      50% { opacity: 0.8; text-shadow: 0 0 10px var(--primary); }
     }
 
     /* Heart Game */
     .heart {
       position: absolute;
-      font-size: 2rem;
+      font-size: 2.5rem;
       animation: fall linear;
       cursor: pointer;
-      filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.8));
+      filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.9));
       z-index: 10;
+      transition: transform 0.2s;
+    }
+
+    .heart:hover {
+      transform: scale(1.2);
     }
 
     @keyframes fall {
-      0% { top: -50px; transform: rotate(0deg); }
-      100% { top: 100vh; transform: rotate(360deg); }
+      0% { top: -50px; transform: rotate(0deg) scale(0.8); }
+      100% { top: 100vh; transform: rotate(360deg) scale(1.1); }
     }
 
     #scoreDisplay {
-      font-size: 1.5rem;
-      margin-top: 20px;
+      font-size: 1.8rem;
+      margin-top: 25px;
       color: var(--text);
+      text-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
     }
 
     #progressContainer {
       width: 100%;
-      background-color: #333;
+      background-color: #222;
       border-radius: 50px;
-      margin: 20px 0;
+      margin: 25px 0;
       overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
     }
 
     #progressBar {
       width: 0%;
-      height: 15px;
+      height: 20px;
       background: linear-gradient(90deg, var(--primary), var(--accent2));
       border-radius: 50px;
-      transition: width 0.5s ease;
+      transition: width 0.7s ease;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
     }
 
     /* Final Message */
     #finalMessage {
-      font-size: 1.2rem;
-      line-height: 2;
-      margin: 30px 0;
+      font-size: 1.3rem;
+      line-height: 2.2;
+      margin: 35px 0;
       text-align: center;
-      min-height: 200px;
+      min-height: 250px;
       color: var(--text);
       position: relative;
+      text-shadow: 0 0 8px rgba(255, 182, 193, 0.3);
     }
 
     .typewriter {
-      border-right: 3px solid var(--primary);
-      animation: blink-caret 0.75s step-end infinite;
+      border-right: 4px solid var(--primary);
+      animation: blink-caret 0.8s step-end infinite;
+      padding-right: 5px;
     }
 
     @keyframes blink-caret {
@@ -201,61 +226,81 @@
     }
 
     .flower {
-      font-size: 3rem;
-      margin: 20px 0;
-      animation: float 2s ease-in-out infinite;
-      filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+      font-size: 4rem;
+      margin: 30px 0;
+      animation: float 2.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.7));
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-25px) rotate(5deg); }
     }
 
     /* Media Screen */
     #mediaScreen h1 {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     .media-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin: 30px 0;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
     }
 
     .media-item {
       width: 100%;
-      height: 150px;
-      border-radius: 15px;
+      height: 180px;
+      border-radius: 20px;
       object-fit: cover;
-      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
       opacity: 0;
-      transform: scale(0.8);
-      transition: all 0.5s ease;
+      transform: scale(0.7) rotate(-5deg);
+      transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .media-item.visible {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) rotate(0deg);
     }
 
     /* Mobile Responsiveness */
     @media (max-width: 600px) {
+      .screen {
+        padding: 20px;
+        width: 85%;
+      }
+      
       .media-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
       }
       
       .media-item {
-        height: 200px;
+        height: 220px;
       }
       
       button {
-        padding: 10px 20px;
-        font-size: 1rem;
+        padding: 12px 25px;
+        font-size: 1.1rem;
+        margin: 15px 10px;
       }
       
       #finalMessage {
+        font-size: 1.1rem;
+        line-height: 2;
+      }
+      
+      .flower {
+        font-size: 3.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      p {
         font-size: 1rem;
       }
     }
@@ -268,15 +313,15 @@
   <!-- First Landing Page -->
   <div id="landing" class="screen">
     <h1 class="blink text-gradient">HAPPY BIRTHDAY MY LOVE</h1>
-    <p class="text-light">Wishing you a day filled with joy and happiness.</p>
-    <button class="btn-gradient" onclick="goToScreen1()"> Ready for surprise? </button>
+    <p class="text-light">Every moment with you feels like a beautiful dream come true</p>
+    <button class="btn-gradient" onclick="goToScreen1()">Ready for your surprise? 💝</button>
   </div>
 
   <!-- Game Start Screen -->
   <div id="screen1" class="screen">
     <h1 class="blink text-pink">HEART CATCHING GAME</h1>
-    <p class="text-light">Catch 10 hearts to unlock your special message!</p>
-    <button class="btn-pink" onclick="startGame()">START GAME</button>
+    <p class="text-light">Catch 10 hearts to unlock your special message!<br>Each heart represents my love for you</p>
+    <button class="btn-pink" onclick="startGame()">START GAME 💖</button>
   </div>
 
   <!-- Game Screen -->
@@ -290,7 +335,7 @@
   <!-- Congratulations Screen -->
   <div id="congratsScreen" class="screen">
     <h1 class="text-gradient">CONGRATULATIONS! 🎉</h1>
-    <p class="text-light">You've collected all 10 hearts! But you have only 1 heart that is mine</p>
+    <p class="text-light">You've collected all 10 hearts!<br>But remember, you only need one - mine ❤️</p>
     <button id="romanticButton" class="btn-gradient" onclick="showFinalMessage()">Ready for your special message?</button>
   </div>
 
@@ -298,18 +343,19 @@
   <div id="finalMessageScreen" class="screen">
     <div class="flower">🌸</div>
     <div id="finalMessage"></div>
-    <button id="nextButton" class="btn-red" onclick="showMediaScreen()">Wanna see our memories?</button>
+    <button id="nextButton" class="btn-red" onclick="showMediaScreen()">Wanna see our beautiful memories? 📸</button>
   </div>
 
   <!-- Media Screen -->
   <div id="mediaScreen" class="screen">
     <h1 class="text-pink">Our Beautiful Memories 💖</h1>
+    <p class="text-light">Every moment with you becomes my favorite memory</p>
     <div class="media-grid">
-      <img class="media-item" src="https://i.postimg.cc/PqSg6bR7/img1.jpg" alt="Memory 1">
-      <img class="media-item" src="https://i.postimg.cc/ZK61kzQp/img2.jpg" alt="Memory 2">
-      <img class="media-item" src="https://i.postimg.cc/dVdzGkdb/img3.jpg" alt="Memory 3">
+      <img class="media-item" src="https://i.postimg.cc/PqSg6bR7/img1.jpg" alt="Our Memory 1">
+      <img class="media-item" src="https://i.postimg.cc/ZK61kzQp/img2.jpg" alt="Our Memory 2">
+      <img class="media-item" src="https://i.postimg.cc/dVdzGkdb/img3.jpg" alt="Our Memory 3">
     </div>
-    <button class="btn-pink" onclick="location.reload()">Start Over</button>
+    <button class="btn-pink" onclick="location.reload()">Start Over 🔄</button>
   </div>
 
   <script>
@@ -339,23 +385,23 @@ Happy Birthday My Beautiful Queenie 🤍💎`;
     // Create background flowers
     function createBackgroundFlowers() {
       const flowersContainer = document.getElementById('backgroundFlowers');
-      const flowers = ['🌸', '🌺', '🌹', '💐', '🏵️']; // Only pink/red flowers
+      const flowers = ['🌸', '🌺', '🌹', '💐', '🏵️', '🌷', '🌼']; 
       const screenWidth = window.innerWidth;
       
-      // Create 15 flowers
-      for (let i = 0; i < 15; i++) {
+      // Create 20 flowers
+      for (let i = 0; i < 20; i++) {
         const flower = document.createElement('div');
         flower.className = 'bg-flower';
         flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
         
         // Random position
         flower.style.left = Math.random() * screenWidth + 'px';
-        flower.style.top = -100 + 'px'; // Start above viewport
+        flower.style.top = -150 + 'px';
         
-        // Random animation duration and delay
-        const duration = 15 + Math.random() * 15;
+        // Random animation
+        const duration = 18 + Math.random() * 20;
         flower.style.animationDuration = duration + 's';
-        flower.style.animationDelay = Math.random() * 5 + 's';
+        flower.style.animationDelay = Math.random() * 8 + 's';
         
         flowersContainer.appendChild(flower);
       }
@@ -364,7 +410,32 @@ Happy Birthday My Beautiful Queenie 🤍💎`;
     // Initialize
     window.onload = function() {
       createBackgroundFlowers();
+      // Add floating hearts occasionally
+      setInterval(() => {
+        if (document.getElementById('landing').style.display !== 'none') {
+          createFloatingHeart();
+        }
+      }, 3000);
     };
+
+    function createFloatingHeart() {
+      const heart = document.createElement('div');
+      heart.innerHTML = '❤️';
+      heart.style.position = 'fixed';
+      heart.style.fontSize = '2rem';
+      heart.style.opacity = '0.7';
+      heart.style.animation = 'floatDown 15s linear';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = '-50px';
+      heart.style.zIndex = '-1';
+      heart.style.pointerEvents = 'none';
+      document.body.appendChild(heart);
+      
+      // Remove after animation
+      setTimeout(() => {
+        heart.remove();
+      }, 15000);
+    }
 
     function goToScreen1() {
       document.getElementById('landing').style.display = 'none';
@@ -387,7 +458,7 @@ Happy Birthday My Beautiful Queenie 🤍💎`;
       document.querySelectorAll('.heart').forEach(heart => heart.remove());
       
       // Start spawning hearts
-      spawnInterval = setInterval(spawnHeart, 800);
+      spawnInterval = setInterval(spawnHeart, 700);
     }
 
     function spawnHeart() {
@@ -400,18 +471,21 @@ Happy Birthday My Beautiful Queenie 🤍💎`;
         return;
       }
 
-      const hearts = ['❤️', '💖', '💕', '💓', '💗'];
+      const hearts = ['❤️', '💖', '💕', '💓', '💗', '💘', '💝'];
       const heart = document.createElement('div');
       heart.className = 'heart';
       heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
       heart.style.left = Math.random() * window.innerWidth + 'px';
-      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      heart.style.animationDuration = 3 + Math.random() * 3 + 's';
       document.body.appendChild(heart);
 
       heart.onclick = () => {
         score++;
         updateScore();
-        heart.remove();
+        heart.style.animation = 'none';
+        heart.style.transform = 'scale(1.5)';
+        heart.style.opacity = '0';
+        setTimeout(() => heart.remove(), 300);
         heartsSpawned--;
         
         if (score >= totalHeartsNeeded) {
@@ -424,7 +498,7 @@ Happy Birthday My Beautiful Queenie 🤍💎`;
           heart.remove();
           heartsSpawned--;
         }
-      }, 5000);
+      }, 6000);
       
       heartsSpawned++;
     }
@@ -432,6 +506,13 @@ Happy Birthday My Beautiful Queenie 🤍💎`;
     function updateScore() {
       document.getElementById('scoreDisplay').textContent = `Hearts Collected: ${score}/${totalHeartsNeeded}`;
       document.getElementById('progressBar').style.width = `${(score/totalHeartsNeeded)*100}%`;
+      
+      // Pulse effect when collecting hearts
+      const progressBar = document.getElementById('progressBar');
+      progressBar.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        progressBar.style.transform = 'scale(1)';
+      }, 200);
     }
 
     function showCongratsScreen() {
@@ -442,6 +523,13 @@ Happy Birthday My Beautiful Queenie 🤍💎`;
       
       // Show background flowers again
       document.getElementById('backgroundFlowers').style.display = 'block';
+      
+      // Add some floating hearts for celebration
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+          createFloatingHeart();
+        }, i * 300);
+      }
     }
 
     function showFinalMessage() {
@@ -454,11 +542,19 @@ Happy Birthday My Beautiful Queenie 🤍💎`;
       element.classList.add('typewriter');
       
       let i = 0;
-      const speed = 30; // typing speed in ms
+      const speed = 25; // typing speed in ms
       
       function typeWriter() {
         if (i < romanticMessage.length) {
-          element.innerHTML += romanticMessage.charAt(i);
+          // Add slight random color variation
+          const colors = ['#ff69b4', '#ff1493', '#ff6b9d', '#ff4757'];
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const charSpan = document.createElement('span');
+          charSpan.textContent = romanticMessage.charAt(i);
+          charSpan.style.color = color;
+          charSpan.style.textShadow = `0 0 5px ${color}`;
+          element.appendChild(charSpan);
+          
           i++;
           setTimeout(typeWriter, speed);
         } else {
@@ -467,20 +563,30 @@ Happy Birthday My Beautiful Queenie 🤍💎`;
       }
       
       typeWriter();
+      
+      // Add floating hearts around the message
+      setInterval(() => {
+        createFloatingHeart();
+      }, 2000);
     }
 
     function showMediaScreen() {
       document.getElementById('finalMessageScreen').style.display = 'none';
       document.getElementById('mediaScreen').style.display = 'block';
       
-      // Animate images one by one
+      // Animate images one by one with different delays
       const mediaItems = document.querySelectorAll('.media-item');
       mediaItems.forEach((item, index) => {
         setTimeout(() => {
           item.classList.add('visible');
-        }, index * 500); // 500ms delay between each image
+        }, index * 600); // 600ms delay between each image
       });
+      
+      // Continue floating hearts in background
+      setInterval(() => {
+        createFloatingHeart();
+      }, 3000);
     }
   </script>
 </body>
-
+</html>
