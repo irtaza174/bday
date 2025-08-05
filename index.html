@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: hotpink;
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    #landing, #screen1, #screen2, #congratsScreen, #finalMessageScreen, #mediaScreen {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 800px;
+      padding: 20px;
+      animation: fadeIn 1s ease-in;
+      display: none;
+    }
+
+    #landing {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background: hotpink;
+      color: black;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 10px;
+    }
+
+    .blink {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      animation: fall linear;
+      cursor: pointer;
+    }
+
+    @keyframes fall {
+      0% { top: -50px; }
+      100% { top: 100vh; }
+    }
+
+    #scoreDisplay {
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+
+    #progressContainer {
+      width: 100%;
+      background-color: #333;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    #progressBar {
+      width: 0%;
+      height: 20px;
+      background-color: hotpink;
+      border-radius: 5px;
+      transition: width 0.3s;
+    }
+
+    #romanticButton {
+      background: white;
+      color: hotpink;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    #finalMessage {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin: 20px 0;
+      text-align: center;
+      white-space: pre-line;
+    }
+
+    .flower {
+      font-size: 3rem;
+      margin: 20px 0;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Media Screen Styles */
+    #mediaContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .media-item {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+      object-fit: cover;
+    }
+
+    .image-item {
+      width: 200px;
+      height: 200px;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .video-item {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    }
+
+    #nextButton {
+      background: white;
+      color: hotpink;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- First Landing Page -->
+  <div id="landing" class="show">
+    <h1 class="blink">HAPPY BIRTHDAY</h1>
+    <p>Wishing you a day filled with joy and happiness.</p>
+    <button onclick="goToScreen1()">Open</button>
+  </div>
+
+  <!-- Game Start Screen -->
+  <div id="screen1">
+    <h1 class="blink">HEART CATCHING GAME</h1>
+    <p>Catch 10 hearts to unlock your special message!</p>
+    <button onclick="startGame()">START GAME</button>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="screen2">
+    <div id="scoreDisplay">Hearts Collected: 0/10</div>
+    <div id="progressContainer">
+      <div id="progressBar"></div>
+    </div>
+  </div>
+
+  <!-- Congratulations Screen -->
+  <div id="congratsScreen">
+    <h1>CONGRATULATIONS!</h1>
+    <p>You've collected all 10 hearts!</p>
+    <button id="romanticButton" onclick="showFinalMessage()">Ready for your special message?</button>
+  </div>
+
+  <!-- Final Romantic Message Screen -->
+  <div id="finalMessageScreen">
+    <div class="flower">🌸</div>
+    <div id="finalMessage"></div>
+    <button id="nextButton" onclick="showMediaScreen()">Next</button>
+  </div>
+
+  <!-- Media Screen -->
+  <div id="mediaScreen">
+    <h1>Our Beautiful Memories</h1>
+    
+    <div class="image-row">
+      <!-- Replace with your image URLs -->
+      <img class="media-item image-item" src="https://i.postimg.cc/PqSg6bR7/img1.jpg" alt="Memory 1">
+      <img class="media-item image-item" src="https://i.postimg.cc/ZK61kzQp/img2.jpg" alt="Memory 2">
+      <img class="media-item image-item" src="https://i.postimg.cc/dVdzGkdb/img3.jpg" alt="Memory 3">
+    </div>
+    
+    <button onclick="location.reload()">Start Over</button>
+  </div>
+
+  <script>
+    let score = 0;
+    const totalHeartsNeeded = 10;
+    let heartsSpawned = 0;
+    let spawnInterval;
+
+    const romanticMessage = `Meri Pyaari begumm,
+
+apko apka birthday bht bht Mubarak hoo
+aur ap iss tarah hi hamesha Khush rho hoo
+(yani mere Sath)
+
+and I do love you so much
+and I'll keep loving you till the last breath
+and in the world as well,
+
+apna dhayan rkha kro
+ik Tum hoo mere pass jiski waja sai
+Mai khud ko ameer smjta Hun
+mujy gareeb naii honay Dena
+
+and I love you a lot Meri Zindagi,
+happy birthday my beautiful Queenie 🤍💎`;
+
+    function goToScreen1() {
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('screen1').style.display = 'block';
+    }
+
+    function startGame() {
+      document.getElementById('screen1').style.display = 'none';
+      document.getElementById('screen2').style.display = 'block';
+      
+      // Reset game state
+      score = 0;
+      heartsSpawned = 0;
+      updateScore();
+      
+      // Clear any existing hearts
+      document.querySelectorAll('.heart').forEach(heart => heart.remove());
+      
+      // Start spawning hearts
+      spawnInterval = setInterval(spawnHeart, 800);
+    }
+
+    function spawnHeart() {
+      if (score >= totalHeartsNeeded) {
+        clearInterval(spawnInterval);
+        return;
+      }
+      
+      if (heartsSpawned >= 20) {
+        return;
+      }
+
+      const hearts = ['❤️', '💖', '💕', '💓', '💗'];
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+      document.body.appendChild(heart);
+
+      heart.onclick = () => {
+        score++;
+        updateScore();
+        heart.remove();
+        heartsSpawned--;
+        
+        if (score >= totalHeartsNeeded) {
+          setTimeout(showCongratsScreen, 1000);
+        }
+      };
+
+      setTimeout(() => {
+        if (heart.parentNode) {
+          heart.remove();
+          heartsSpawned--;
+        }
+      }, 5000);
+      
+      heartsSpawned++;
+    }
+
+    function updateScore() {
+      document.getElementById('scoreDisplay').textContent = `Hearts Collected: ${score}/${totalHeartsNeeded}`;
+      document.getElementById('progressBar').style.width = `${(score/totalHeartsNeeded)*100}%`;
+    }
+
+    function showCongratsScreen() {
+      clearInterval(spawnInterval);
+      document.getElementById('screen2').style.display = 'none';
+      document.getElementById('congratsScreen').style.display = 'block';
+      document.querySelectorAll('.heart').forEach(heart => heart.remove());
+    }
+
+    function showFinalMessage() {
+      document.getElementById('congratsScreen').style.display = 'none';
+      document.getElementById('finalMessageScreen').style.display = 'block';
+      document.getElementById('finalMessage').textContent = romanticMessage;
+    }
+
+    function showMediaScreen() {
+      document.getElementById('finalMessageScreen').style.display = 'none';
+      document.getElementById('mediaScreen').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
